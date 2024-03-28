@@ -1,4 +1,4 @@
-import { CallHandler, ExecutionContext, Injectable, Logger, NestInterceptor } from '@nestjs/common';
+import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -8,10 +8,7 @@ interface response<T> {
 
 @Injectable()
 export class ApiSuccessInterceptor<T> implements NestInterceptor<T, response<T>> {
-  intercept(context: ExecutionContext, next: CallHandler<T>): Observable<any> {
-    const request = context.switchToHttp().getRequest();
-    Logger.log(request.url, '正常接口请求');
-
+  intercept(_context: ExecutionContext, next: CallHandler<T>): Observable<any> {
     return next.handle().pipe(
       map((data) => {
         return {

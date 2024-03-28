@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query } from 
 import { QueryUserDto } from './dto/user.query';
 import { UserListVo } from './vo/user.vo';
 import { UserService } from './user.service';
-import { UserDto } from './dto/user.dto';
+import { UserDto, UpdateUserInfoDto, UpdateUserStatusDto } from './dto/user.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('用户模块')
@@ -16,10 +16,22 @@ export class UserController {
     return await this.userService.getUserList(queryOption);
   }
 
-  @ApiOperation({ summary: '添加用户' })
+  @ApiOperation({ summary: '新增用户' })
   @Post('addUser')
   async addUserApi(@Body() req: UserDto): Promise<string> {
     return await this.userService.addUser(req);
+  }
+
+  @ApiOperation({ summary: '更新用户信息' })
+  @Post('updateUser')
+  async updateUserApi(@Body() req: UpdateUserInfoDto): Promise<string> {
+    return await this.userService.updateUser(req);
+  }
+
+  @ApiOperation({ summary: '更新用户状态' })
+  @Post('updateUserStatus')
+  async updateUserStatusApi(@Body() req: UpdateUserStatusDto): Promise<string> {
+    return await this.userService.updateUserStatus(req);
   }
 
   @ApiOperation({ summary: '根据用户id删除用户' })
