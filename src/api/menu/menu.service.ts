@@ -42,8 +42,8 @@ export class MenuService {
     return {
       list: this.createMenuMethod(data),
       total,
-      pageNumber: pageNumber || PageEnum.PAGE_NUMBER,
-      pageSize: pageSize || PageEnum.PAGE_SIZE,
+      pageNumber: pageNumber ? Number(pageNumber) : PageEnum.PAGE_NUMBER,
+      pageSize: pageSize ? Number(pageSize) : PageEnum.PAGE_SIZE,
     };
   }
 
