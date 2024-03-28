@@ -130,8 +130,8 @@ export class UserService {
       .select('user.id', 'id')
       .addSelect('user.username', 'username')
       .addSelect('user.email', 'email')
-      .addSelect('user.isValid', 'isValid')
-      .addSelect('user.isAdmin', 'isAdmin')
+      .addSelect('user.roleId', 'roleId')
+      .addSelect('user.status', 'status')
       .addSelect('user.lastLoginDate', 'lastLoginDate')
       .addSelect('user.createdTime', 'createdTime')
       .addSelect('user.updatedTime', 'updatedTime');
