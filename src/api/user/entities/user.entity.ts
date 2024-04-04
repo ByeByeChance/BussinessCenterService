@@ -30,10 +30,10 @@ export class UserEntity extends SharedEntity {
 
   @Column({
     type: 'int',
-    name: 'sex',
+    name: 'gender',
     comment: '性别：0 未知 1 男 2 女',
   })
-  sex!: number;
+  gender!: number;
 
   @Column({
     type: 'datetime',

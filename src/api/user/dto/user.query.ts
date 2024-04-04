@@ -5,6 +5,12 @@ export class QueryUserDto extends QueryOptionsDto {
   @ApiProperty({ description: '用户名', default: '' })
   username?: string;
 
+  @ApiProperty({ description: '用户姓名', default: '' })
+  nickname?: string;
+
+  @ApiProperty({ description: '性别', default: '' })
+  gender?: number;
+
   @ApiProperty({ description: '账号状态', required: false, default: '' })
   status?: number;
 

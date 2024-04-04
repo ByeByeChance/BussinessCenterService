@@ -26,6 +26,8 @@ export class UserService {
   async getUserList(queryOption: QueryUserDto): Promise<UserListVo> {
     const {
       username,
+      nickname,
+      gender,
       status,
       roleId,
       pageNumber = PageEnum.PAGE_NUMBER,
@@ -34,6 +36,12 @@ export class UserService {
     const query = new Map<string, FindOperator<string> | number>();
     if (username) {
       query.set('username', ILike(`%${username}%`));
+    }
+    if (nickname) {
+      query.set('nickname', ILike(`%${nickname}%`));
+    }
+    if (gender) {
+      query.set('gender', gender);
     }
     if (status) {
       query.set('status', status);
@@ -90,7 +98,7 @@ export class UserService {
       password,
       salt,
       nickname: req.nickname,
-      sex: req.sex,
+      gender: req.gender,
       birthday: req.birthday,
       phone: req.phone,
       email: req.email,
@@ -124,7 +132,7 @@ export class UserService {
       {
         username: req.username,
         nickname: req.nickname,
-        sex: req.sex,
+        gender: req.gender,
         birthday: req.birthday,
         phone: req.phone,
         email: req.email,
@@ -196,7 +204,7 @@ export class UserService {
       .select('user.id', 'id')
       .addSelect('user.username', 'username')
       .addSelect('user.nickname', 'nickname')
-      .addSelect('user.sex', 'sex')
+      .addSelect('user.gender', 'gender')
       .addSelect('user.birthday', 'birthday')
       .addSelect('user.phone', 'phone')
       .addSelect('user.email', 'email')

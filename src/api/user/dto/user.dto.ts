@@ -17,7 +17,7 @@ export class UserDto {
   password!: string;
 
   @ApiProperty({ description: '性别', required: false, default: 0 })
-  sex?: number;
+  gender?: number;
 
   @ApiProperty({ description: '生日', required: false, default: 0 })
   birthday?: Date;
@@ -59,7 +59,7 @@ export class UpdateUserInfoDto {
   username!: string;
 
   @ApiProperty({ description: '性别', required: false, default: 0 })
-  sex?: number;
+  gender?: number;
 
   @ApiProperty({ description: '生日', required: false, default: 0 })
   birthday?: Date;
