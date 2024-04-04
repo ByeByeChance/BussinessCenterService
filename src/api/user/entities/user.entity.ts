@@ -8,10 +8,17 @@ export class UserEntity extends SharedEntity {
     type: 'varchar',
     length: 50,
     name: 'username',
-    nullable: true,
-    comment: '账号',
+    comment: '用户名',
   })
   username!: string;
+
+  @Column({
+    type: 'varchar',
+    length: 50,
+    name: 'nickname',
+    comment: '用户姓名',
+  })
+  nickname!: string;
 
   @Column({
     type: 'varchar',
@@ -22,12 +29,47 @@ export class UserEntity extends SharedEntity {
   password!: string;
 
   @Column({
+    type: 'int',
+    name: 'sex',
+    comment: '性别：0 未知 1 男 2 女',
+  })
+  sex!: number;
+
+  @Column({
+    type: 'datetime',
+    name: 'birthday',
+    comment: '生日',
+  })
+  birthday!: Date;
+
+  @Column({
+    type: 'varchar',
+    name: 'phone',
+    comment: '手机号码',
+  })
+  phone?: number;
+
+  @Column({
     type: 'varchar',
     length: 100,
     name: 'email',
     comment: '邮箱',
   })
   email?: string;
+
+  @Column({
+    type: 'int',
+    name: 'jobId',
+    comment: '职位',
+  })
+  jobId?: number;
+
+  @Column({
+    type: 'int',
+    name: 'departmentId',
+    comment: '所属部门',
+  })
+  departmentId?: number;
 
   @Column({
     type: 'int',
