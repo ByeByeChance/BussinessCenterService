@@ -66,6 +66,9 @@ export class UserService {
    * @return {*}
    */
   async addUser(req: UserDto): Promise<string> {
+    if (!req.nickname) {
+      throw new HttpException(`用户姓名不能为空`, HttpStatus.BAD_REQUEST);
+    }
     if (!req.password) {
       throw new HttpException(`密码不能为空`, HttpStatus.BAD_REQUEST);
     }
@@ -86,7 +89,13 @@ export class UserService {
       username: req.username,
       password,
       salt,
+      nickname: req.nickname,
+      sex: req.sex,
+      birthday: req.birthday,
+      phone: req.phone,
       email: req.email,
+      jobId: req.jobId,
+      departmentId: req.departmentId,
       status: req.status,
       roleId: req.roleId,
       createTime: new Date(),
@@ -101,6 +110,9 @@ export class UserService {
    * @return {*}
    */
   async updateUser(req: UpdateUserInfoDto): Promise<string> {
+    if (!req.nickname) {
+      throw new HttpException(`用户姓名不能为空`, HttpStatus.BAD_REQUEST);
+    }
     const userEntity: UserEntity | null = await this.userRepository.findOne({
       where: { id: req.id },
     });
@@ -111,9 +123,15 @@ export class UserService {
       { id: req.id },
       {
         username: req.username,
+        nickname: req.nickname,
+        sex: req.sex,
+        birthday: req.birthday,
+        phone: req.phone,
         email: req.email,
-        roleId: req.roleId,
+        jobId: req.jobId,
+        departmentId: req.departmentId,
         status: req.status,
+        roleId: req.roleId,
         updateTime: new Date(),
       }
     );
@@ -177,7 +195,13 @@ export class UserService {
       .createQueryBuilder('user')
       .select('user.id', 'id')
       .addSelect('user.username', 'username')
+      .addSelect('user.nickname', 'nickname')
+      .addSelect('user.sex', 'sex')
+      .addSelect('user.birthday', 'birthday')
+      .addSelect('user.phone', 'phone')
       .addSelect('user.email', 'email')
+      .addSelect('user.jobId', 'jobId')
+      .addSelect('user.departmentId', 'departmentId')
       .addSelect('user.roleId', 'roleId')
       .addSelect('user.status', 'status')
       .addSelect('user.lastLoginDate', 'lastLoginDate')
