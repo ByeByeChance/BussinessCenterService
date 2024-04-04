@@ -1,5 +1,5 @@
 export class QueryVo {
   id?: number;
-  createdTime?: Date;
-  updatedTime?: Date;
+  createTime?: Date;
+  updateTime?: Date;
 }

@@ -68,7 +68,7 @@ export class MenuService {
       isAffix: req.isAffix ? 1 : 0,
       isKeepAlive: req.isKeepAlive ? 1 : 0,
       sort: req.sort || 0,
-      createdTime: new Date(),
+      createTime: new Date(),
     });
     await this.MenuRepository.save(data);
     return '创建成功';
@@ -102,7 +102,7 @@ export class MenuService {
         isAffix: req.isAffix ? 1 : 0,
         isKeepAlive: req.isKeepAlive ? 1 : 0,
         sort: req.sort || 0,
-        updatedTime: new Date(),
+        updateTime: new Date(),
       }
     );
     return '更新成功';
@@ -145,9 +145,9 @@ export class MenuService {
       .addSelect('Menu.isAffix', 'isAffix')
       .addSelect('Menu.isKeepAlive', 'isKeepAlive')
       .addSelect('Menu.sort', 'sort')
-      .addSelect('Menu.createdTime', 'createdTime')
-      .addSelect('Menu.updatedTime', 'updatedTime')
-      .addSelect('Menu.deletedTime', 'deletedTime');
+      .addSelect('Menu.createTime', 'createTime')
+      .addSelect('Menu.updateTime', 'updateTime')
+      .addSelect('Menu.deleteTime', 'deleteTime');
   }
 
   private handleMenuItem(menuEntity: MenuEntity): MenuItemVo {

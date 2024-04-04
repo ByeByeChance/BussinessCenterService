@@ -48,7 +48,7 @@ export class LoginService {
               token,
               refreshToken,
               expirationTime,
-              updatedTime: new Date(),
+              updateTime: new Date(),
             });
             data = {
               id: userEntity.id,
@@ -76,8 +76,8 @@ export class LoginService {
             token,
             refreshToken,
             expirationTime,
-            createdTime: new Date(),
-            updatedTime: new Date(),
+            createTime: new Date(),
+            updateTime: new Date(),
           });
           await this.accessTokenRepository.save(newTokenData);
           data = {

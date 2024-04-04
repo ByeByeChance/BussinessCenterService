@@ -7,5 +7,5 @@ data_source:
   database: 'business'
 # 配置字段收取及基础类(可选，如果没有配置的话，那么就是默认每个实体类都带了相同的字段)
 data_config:
-  collect: 'id, createdTime, updatedTime, deletedTime'
+  collect: 'id, createTime, updateTime, deleteTime'
   base_name: 'SharedEntity'

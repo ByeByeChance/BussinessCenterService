@@ -89,7 +89,7 @@ export class UserService {
       email: req.email,
       status: req.status,
       roleId: req.roleId,
-      createdTime: new Date(),
+      createTime: new Date(),
     });
     await this.userRepository.save(data);
     return '创建成功';
@@ -114,7 +114,7 @@ export class UserService {
         email: req.email,
         roleId: req.roleId,
         status: req.status,
-        updatedTime: new Date(),
+        updateTime: new Date(),
       }
     );
     return '更新成功';
@@ -136,7 +136,7 @@ export class UserService {
       { id: req.id },
       {
         status: req.status,
-        updatedTime: new Date(),
+        updateTime: new Date(),
       }
     );
     return '更新成功';
@@ -181,7 +181,7 @@ export class UserService {
       .addSelect('user.roleId', 'roleId')
       .addSelect('user.status', 'status')
       .addSelect('user.lastLoginDate', 'lastLoginDate')
-      .addSelect('user.createdTime', 'createdTime')
-      .addSelect('user.updatedTime', 'updatedTime');
+      .addSelect('user.createTime', 'createTime')
+      .addSelect('user.updateTime', 'updateTime');
   }
 }
