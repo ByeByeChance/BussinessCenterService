@@ -9,7 +9,9 @@
     "hget",
     "hgetall",
     "hset",
+    "Inno",
     "Minio",
+    "Navicat",
     "SECRETKEY",
     "typeorm",
     "uuidv"
