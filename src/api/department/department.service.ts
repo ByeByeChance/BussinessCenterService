@@ -73,6 +73,7 @@ export class DepartmentService {
       sort: req.sort,
       status: req.status,
       directorUserId: req.directorUserId,
+      directorNickname: req.directorNickname,
       createTime: new Date(),
     });
     await this.departmentRepository.save(data);
@@ -102,6 +103,7 @@ export class DepartmentService {
         sort: req.sort,
         status: req.status,
         directorUserId: req.directorUserId,
+        directorNickname: req.directorNickname,
         updateTime: new Date(),
       }
     );
@@ -163,7 +165,6 @@ export class DepartmentService {
       .addSelect('department.directorNickname', 'directorNickname')
       .addSelect('department.createUserId', 'createUserId')
       .addSelect('department.createNickname', 'createNickname')
-      .addSelect('department.lastLoginDate', 'lastLoginDate')
       .addSelect('department.createTime', 'createTime')
       .addSelect('department.updateTime', 'updateTime');
   }
